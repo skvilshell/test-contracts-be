@@ -1,0 +1,10 @@
+model Product{
+   id String @id @db.Uuid @default(uuid())
+   title String
+   colors Color[]
+   sizes Size[]
+   Category Category @relation(fields: [category], references: [category])
+   category CategoryTitle
+
+   @@map("product")
+}

@@ -1,0 +1,8 @@
+model Customer {
+   id String @id() @default(uuid())
+   firstName String
+   secondName String
+   colors Color[]
+   
+   @@map("customer")
+}

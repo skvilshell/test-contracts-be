@@ -1,0 +1,4 @@
+{
+  "schemaPath": "prisma/schema.prisma",
+  "models": ["prisma/schema/*.prisma"]
+}

@@ -1,0 +1,20 @@
+model Category{
+   category CategoryTitle @id
+   title String @db.VarChar(100)
+
+   Product Product[]
+
+   @@map("category")
+}
+
+enum CategoryTitle {
+   tShirt
+   tShirtPolo
+   cap
+}
+
+enum Color {
+   pink
+   white
+   black
+}
