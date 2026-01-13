@@ -1,0 +1,79 @@
+model Category {
+  category CategoryTitle @id
+  title    String        @db.VarChar(100)
+
+  Product Product[]
+
+  @@map("category")
+}
+
+enum CategoryTitle {
+  tShirt
+  tShirtPolo
+  cap
+}
+
+enum Color {
+  pink
+  white
+  black
+}
+
+model Product {
+  id        String        @id @default(uuid()) @db.Uuid
+  title     String
+  colors    Color[]
+  sizes     Size[]
+  Category  Category      @relation(fields: [category], references: [category])
+  category  CategoryTitle
+  warehouse Warehouse?
+
+  @@map("product")
+}
+
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../packages/contracts/generated/prisma"
+  // previewFeatures = ["prismaSchemaFolder"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Size {
+  XXS
+  XS
+  S
+  M
+  L
+  XL
+  XXL
+  XXXL
+}
+
+model Customer {
+  id         String  @id() @default(uuid())
+  firstName  String
+  secondName String
+  colors     Color[]
+
+  @@map("customer")
+}
+
+model Warehouse {
+  Product   Product @relation(fields: [productId], references: [id])
+  productId String  @unique
+  color     Color
+  size      Size
+  rest      Int     @db.Integer
+
+  @@id([productId, color, size])
+  @@map("warehouse")
+}

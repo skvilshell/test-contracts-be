@@ -1,0 +1,10 @@
+model Warehouse {
+   Product   Product @relation(fields: [productId], references: [id])
+   productId String  @db.Uuid
+   color     Color
+   size      Size
+   rest      Int     @db.Integer
+
+   @@id([productId, color, size])
+   @@map("warehouse")
+}
