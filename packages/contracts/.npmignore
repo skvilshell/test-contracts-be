@@ -1,0 +1,32 @@
+# Исключить ненужные файлы
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Исходники (если публикуете только dist)
+src/
+tsconfig.json
+
+# Тесты и документация разработчика
+test/
+tests/
+__tests__/
+*.test.js
+*.spec.js
+coverage/
+docs/
+
+# Системные файлы
+.git/
+.gitignore
+.editorconfig
+.eslintrc
+.prettierrc
+
+# Конфигурационные файлы
+.vscode/
+.idea/
+*.log
+
+.npmrc

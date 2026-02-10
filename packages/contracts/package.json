@@ -1,19 +1,35 @@
 {
-  "name": "zod-contract-test",
+  "name": "zod-contract-be-for-test",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Shared contracts and types for the project",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc && cp -r src/generated dist",
+    "prepublishOnly": "npm run build",
+    "publish": "npm publish"
   },
   "keywords": [
     "zod",
     "cotracts",
     "validation"
   ],
-  "author": "artyomshell <artyomshell@gmail.com>",
-  "license": "ISC",
+  "author": {
+    "name": "skvil_shell"
+  },
+  "license": "MIT",
   "dependencies": {
     "zod": "^4.3.5"
+  },
+  "peerDependencies": {
+    "zod": "^4.3.5",
+    "@prisma/client": "^7.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
